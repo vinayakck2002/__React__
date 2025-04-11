@@ -65,26 +65,199 @@ import React from 'react'
       // }
     // -------------------------------------------------------------------------------------------------------------------------------
 
-    class App extends React.Component{
-      constructor(){
-        super()
-        this.state = {age:20}
+//     class App extends React.Component{
+//       constructor(){
+//         super()
+//         this.state = {age:20}
 
-      }
-      changeAge = ()=>{
-        this.setState({age:25})
-      }
-      render(){
-        return(
-          <>
-          <h1>Helo</h1>
-          <h2>age {this.state.age}</h2>
-          <button onClick={this.changeAge} >Change age</button>
+//       }
+//       changeAge = ()=>{
+//         this.setState({age:25})
+//       }
+//       render(){
+//         return(
+//           <>
+//           <h1>Helo</h1>
+//           <h2>age {this.state.age}</h2>
+//           <button onClick={this.changeAge} >Change age</button>
           
-          </>
-        )
-      }
+//           </>
+//         )
+//       }
 
+//     }
+
+// export default App
+
+// --------------------------------getderivedstatefromprops-------------------------------------------------------------------------
+// class App extends React.Component{
+//   constructor(props){
+//     super(props)
+//     this.state = {age:20}
+
+//   }
+//   changeAge = ()=>{
+//     this.setState({age:23})
+//   }
+//   static getDerivedStateFromProps(props,state){
+//     return {age:props.age}
+//   }
+//   render(){
+//     return(
+//       <>
+//       <h1>Helo</h1>
+//       <h2>age {this.state.age}</h2>
+//       <button onClick={this.changeAge} >Change age</button>
+      
+//       </>
+//     )
+//   }
+
+// }
+
+// export default App
+
+// -------------------------------componenet didmount------------------------------------------------------------------------
+// class App extends React.Component{
+//   constructor(props){
+//     super(props)
+//     this.state = {age:20}
+
+//   }
+//   componentDidMount(){
+//     setTimeout(()=>{
+//       this.setState({age:30})
+//     },1000)
+//   }
+
+//   render(){
+//     return(
+//       <>
+//       <h1>Helo</h1>
+//       <h2>age {this.state.age}</h2>
+//       <button onClick={this.changeAge} >Change age</button>
+      
+//       </>
+//     )
+//   }
+
+// }
+
+// export default App
+
+// ----------------------------shouldcomponenetupdate--------------------------------------------------------------------------------------
+// class App extends React.Component{
+//   constructor(props){
+//     super(props)
+//     this.state = {age:20}
+
+//   }
+//   shouldComponentUpdate(){
+//     return true
+//   }
+//   changeAge=()=>{
+//   this.setState({age:30})
+// }
+
+//   render(){
+//     return(
+//       <>
+//       <h1>Helo</h1>
+//       <h2>age {this.state.age}</h2>
+//       <button onClick={this.changeAge} >Change age</button>
+      
+//       </>
+//     )
+//   }
+
+// }
+
+// export default App
+// no changes effect shouldcomponentupdate
+
+// ----------------------------------getSnapshotBeforeUpdate---componentDidUpdate--------------------------------------------------------------------------
+// class App extends React.Component{
+//   constructor(props){
+//     super(props)
+//     this.state = {age:20}
+
+//   }
+//   shouldComponentUpdate(){
+//     return true
+//   }
+//   changeAge=()=>{
+//   this.setState({age:30})
+// }
+// componentDidMount(){
+//   setTimeout(()=>{
+//     this.setState({age:30})
+//   },1000)
+// }
+// getSnapshotBeforeUpdate(prevProps,prevSate){
+//   console.log(prevProps,prevSate);
+  
+// }
+// componentDidUpdate(){
+//   console.log("component updated");
+  
+// }
+
+//   render(){
+//     return(
+//       <>
+//       <h1>Helo</h1>
+//       <h2>age {this.state.age}</h2>
+//       <button onClick={this.changeAge} >Change age</button>
+      
+//       </>
+//     )
+//   }
+
+// }
+
+// export default App
+
+// ----------------------------------------------------------------------------------------------------------
+
+class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {show:true}
+
+  }
+  deleteHead=()=>{
+    this.setState({show:false})
+  }
+
+  render(){
+    let myhead;
+    if(this.state.show){
+      myhead=<Sub />
     }
+    return(
+      <>
+      <h1>Helo</h1>
+      {myhead}
+      <button onClick={this.deleteHead} >delete</button>
+      </>
+    )
+  }
 
+}
+
+class Sub extends React.Component{
+  componentWillUnmount(){
+    alert("componentwillunmount")
+
+  }
+  render(){
+    return(
+      <>
+      <h1>Sub</h1>
+      </>
+    )
+  }
+}
+  
+  
 export default App
